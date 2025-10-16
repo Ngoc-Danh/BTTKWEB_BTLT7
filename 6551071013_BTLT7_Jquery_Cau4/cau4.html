@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document4</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form>
+  <select id="colorSelect">
+    <option>Red</option>
+    <option>Green</option>
+    <option>White</option>
+    <option>Black</option>
+  </select>
+  <input type="button" id="removeBtn" value="Select and Remove">
+</form>
+<script>
+$(document).ready(function(){
+    $("#removeBtn").click(function(){
+        var selected = $("#colorSelect option:selected");
+        if(selected.length > 0){
+            alert("Đã xóa: " + selected.text());
+            selected.remove();
+        } else {
+            alert("Vui lòng chọn một màu sắc để xóa!");
+        }
+    });
+});
+</script>
+</body>
+</html>
