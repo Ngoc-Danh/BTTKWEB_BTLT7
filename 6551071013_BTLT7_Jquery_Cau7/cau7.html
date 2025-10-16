@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document7</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<h1>Nhập đường link và nhấn "Submit" để chuyển hướng:</h1>
+<form id="linkForm">
+  <input type="text" id="linkInput" placeholder="Nhập đường link">
+  <button type="submit">Submit</button>
+</form>
+<script>
+$(function(){
+  $('#linkForm').on('submit', function(e){
+    e.preventDefault()
+    let link = $('#linkInput').val().trim()
+    if(link){
+      if(confirm('Bạn có muốn chuyển đến liên kết này không?')){
+        window.location.href = link
+      }
+    }
+  })
+})
+</script>
+</body>
+</html>

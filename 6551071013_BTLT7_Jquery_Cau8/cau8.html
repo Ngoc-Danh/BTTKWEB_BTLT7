@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.calc {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+input {
+  width: 100px;
+  padding: 6px;
+}
+
+button {
+  padding: 6px 10px;
+}
+
+#result {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  min-width: 100px;
+  background: #f9f9f9;
+}
+</style>
+<body>
+    <h2>Máy tính </h2>
+    <div class="calc">
+        <input type="number" id="a" placeholder="Số a" step="any">
+        <button class="op" data-op="+">+</button>
+        <button class="op" data-op="-">-</button>
+        <button class="op" data-op="*">×</button>
+        <button class="op" data-op="/">÷</button>
+        <input type="number" id="b" placeholder="Số b" step="any">
+        <span>=</span>
+        <div id="result">Kết quả</div>
+        <button id="clear">Clear</button>
+    </div>
+
+    <script>
+        $(function() {
+        $('.op').on('click', function() {
+            var a = parseFloat($('#a').val())
+            var b = parseFloat($('#b').val())
+            if (isNaN(a) || isNaN(b)) {
+            $('#result').text('Nhập hai số')
+            return
+            }
+            var op = $(this).data('op')
+            var r
+            if (op === '+'){
+                r = a + b;
+            } 
+            else if (op === '-'){
+                r = a - b
+            } 
+            else if (op === '*'){
+                r = a * b;
+            } 
+            else if (op === '/') {
+            if (b === 0) {
+                $('#result').text('Không chia cho 0')
+                return
+            }
+            r = a / b
+            }
+            $('#result').text(r)
+        })
+        $('#clear').on('click', function() {
+            $('#a,#b').val('')
+            $('#result').text('Kết quả')
+        })
+        })
+</script>
+</body>
+</html>
